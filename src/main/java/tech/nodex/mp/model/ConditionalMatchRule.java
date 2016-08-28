@@ -1,8 +1,9 @@
-package tech.nodex.mp.api.model;
+package tech.nodex.mp.model;
 
 /**
  * Created by cz on 2016-8-28.
  */
+
 public class ConditionalMatchRule {
     Integer group_id,sex,client_platform_type;
     String country,province,city;

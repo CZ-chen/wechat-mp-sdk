@@ -1,16 +1,11 @@
 package tech.nodex.mp.api;
 
-import tech.nodex.mp.api.model.AccessToken;
-import tech.nodex.mp.api.model.CallbacKip;
-import tech.nodex.mp.api.model.Menu;
-import tech.nodex.mp.api.model.Menus;
-import tech.nodex.tutils2.jackson.JsonUtils;
+import tech.nodex.mp.model.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-import static tech.nodex.mp.api.InvokeHelper.*;
+import static tech.nodex.mp.utils.InvokeUtils.*;
 
 /**
  * 公众号菜单API
@@ -27,7 +22,7 @@ public class MenuApi {
         String result = postJson(
                     String.class,
                     "https://api.weixin.qq.com/cgi-bin/menu/create",
-                    JsonUtils.toJson(menu),
+                    menu,
                     "access_token",
                     access_token
             );

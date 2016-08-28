@@ -1,9 +1,7 @@
 package tech.nodex.mp.api;
 
-import tech.nodex.mp.api.model.AccessToken;
-import tech.nodex.mp.api.model.CallbacKip;
-
-import static tech.nodex.mp.api.InvokeHelper.*;
+import tech.nodex.mp.model.*;
+import static tech.nodex.mp.utils.InvokeUtils.*;
 /**
  * Created by cz on 2016-8-28.
  */

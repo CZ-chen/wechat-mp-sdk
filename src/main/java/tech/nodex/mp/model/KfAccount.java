@@ -1,8 +1,11 @@
-package tech.nodex.mp.api.model;
+package tech.nodex.mp.model;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * Created by cz on 2016-8-28.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class KfAccount {
     String kf_id,kf_account,nickname,password,kf_headimgurl;
 

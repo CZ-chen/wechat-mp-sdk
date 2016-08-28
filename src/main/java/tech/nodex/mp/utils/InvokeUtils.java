@@ -1,8 +1,9 @@
-package tech.nodex.mp.api;
+package tech.nodex.mp.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
+import tech.nodex.mp.exception.ApiInvokeException;
 import tech.nodex.tutils2.http.HttpResult;
 import tech.nodex.tutils2.http.Requester;
 import tech.nodex.tutils2.jackson.JsonUtils;
@@ -12,12 +13,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static javafx.scene.input.KeyCode.T;
-
 /**
  * Created by cz on 2016-8-27.
  */
-public class InvokeHelper {
+public class InvokeUtils {
     private static final Map<String,String[]> PARM_NAMES_MAP = new HashMap<String,String[]>();
 
     public static <T>T postJson(Class<T> targetType,String url,Object postData,String parmNamesStr,Object ... parmVals){
@@ -36,7 +35,7 @@ public class InvokeHelper {
         return executeForObject(req,targetType);
     }
 
-    private static Requester createRequester(String url, String[] parmNames, Object[] parmVals) {
+    public static Requester createRequester(String url, String[] parmNames, Object[] parmVals) {
         asserParmsCountMatch(parmNames,parmVals);
         Requester req = Requester.instance().setMethod(Requester.Method.GET).setUrl(url);
         if(parmNames!=null){
@@ -47,7 +46,7 @@ public class InvokeHelper {
         return req;
     }
 
-    private static Requester createRequester(String url, byte[] postData,String[] parmNames, Object[] parmVals) {
+    public static Requester createRequester(String url, byte[] postData,String[] parmNames, Object[] parmVals) {
         asserParmsCountMatch(parmNames,parmVals);
         Requester req = Requester.instance().setMethod(Requester.Method.POST).setUrl(url).setBody(postData);
         if(parmNames!=null){
@@ -69,6 +68,12 @@ public class InvokeHelper {
         HttpResult result = req.execute();
         assertHasContent(result);
         return Strings.fromBytes(result.getRespBody());
+    }
+
+    public static byte[] executeForBytes(Requester req){
+        HttpResult result = req.execute();
+        assertHasContent(result);
+        return result.getRespBody();
     }
 
     public static String[] splitParmNames(String parmNamesStr){

@@ -1,4 +1,4 @@
-package tech.nodex.mp.api;
+package tech.nodex.mp.exception;
 
 /**
  * Created by cz on 2016-8-27.

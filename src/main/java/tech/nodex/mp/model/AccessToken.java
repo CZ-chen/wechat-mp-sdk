@@ -1,4 +1,4 @@
-package tech.nodex.mp.api.model;
+package tech.nodex.mp.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
